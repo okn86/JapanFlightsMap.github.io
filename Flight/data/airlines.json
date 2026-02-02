@@ -1,0 +1,27 @@
+[
+  {
+    "iata": "JL",
+    "name": "Japan Airlines",
+    "type": "FSC"
+  },
+  {
+    "iata": "NH",
+    "name": "All Nippon Airways",
+    "type": "FSC"
+  },
+  {
+    "iata": "HD",
+    "name": "Air Do",
+    "type": "FSC"
+  },
+  {
+    "iata": "GK",
+    "name": "Jetstar Japan",
+    "type": "LCC"
+  },
+  {
+    "iata": "MM",
+    "name": "Peach Aviation",
+    "type": "LCC"
+  }
+]

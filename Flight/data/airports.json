@@ -1,0 +1,44 @@
+[
+  {
+    "iata": "HND",
+    "name": "Tokyo Haneda",
+    "city": "Tokyo",
+    "lat": 35.5494,
+    "lng": 139.7798
+  },
+  {
+    "iata": "CTS",
+    "name": "New Chitose",
+    "city": "Sapporo",
+    "lat": 42.7752,
+    "lng": 141.6923
+  },
+  {
+    "iata": "FUK",
+    "name": "Fukuoka",
+    "city": "Fukuoka",
+    "lat": 33.5859,
+    "lng": 130.4507
+  },
+  {
+    "iata": "OKA",
+    "name": "Naha",
+    "city": "Okinawa",
+    "lat": 26.1958,
+    "lng": 127.6469
+  },
+  {
+    "iata": "ITM",
+    "name": "Osaka Itami",
+    "city": "Osaka",
+    "lat": 34.7855,
+    "lng": 135.4382
+  },
+  {
+    "iata": "KIX",
+    "name": "Kansai International",
+    "city": "Osaka",
+    "lat": 34.4347,
+    "lng": 135.2440
+  }
+]

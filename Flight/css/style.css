@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  padding: 10px;
+  background: #f8f8f8;
+  border-bottom: 1px solid #ddd;
+}
+
+h1 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+}
+
+.search-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.search-bar input {
+  padding: 6px;
+  font-size: 14px;
+}
+
+.search-bar button {
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+#map {
+  height: calc(100vh - 110px);
+}

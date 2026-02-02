@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Japan Domestic Flight Map</title>
+
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet/dist/leaflet.css"
+  />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Japan Domestic Flight Map</h1>
+    <div class="search-bar">
+      <input type="text" id="originInput" placeholder="出発空港 (例: HND)" />
+      <input type="text" id="destinationInput" placeholder="到着空港 (例: CTS)" />
+      <input type="text" id="airlineInput" placeholder="航空会社 (例: JL)" />
+      <button id="searchBtn">検索</button>
+      <button id="resetBtn">リセット</button>
+    </div>
+  </header>
+
+  <div id="map"></div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <script src="js/dataLoader.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

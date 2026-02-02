@@ -1,0 +1,32 @@
+[
+  {
+    "origin": "CTS",
+    "destination": "HND",
+    "airlines": ["JL", "NH", "HD"]
+  },
+  {
+    "origin": "FUK",
+    "destination": "HND",
+    "airlines": ["JL", "NH", "MM"]
+  },
+  {
+    "origin": "HND",
+    "destination": "OKA",
+    "airlines": ["JL", "NH", "GK", "MM"]
+  },
+  {
+    "origin": "ITM",
+    "destination": "HND",
+    "airlines": ["JL", "NH"]
+  },
+  {
+    "origin": "KIX",
+    "destination": "OKA",
+    "airlines": ["MM", "GK"]
+  },
+  {
+    "origin": "CTS",
+    "destination": "FUK",
+    "airlines": ["JL"]
+  }
+]
