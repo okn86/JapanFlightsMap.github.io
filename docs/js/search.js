@@ -19,6 +19,7 @@ function populateDropdowns() {
   const airlineSelect = document.getElementById("airlineSelect");
 
   airports.forEach(airport => {
+    if (!airport.iata) return;
     airportSelect.add(
       new Option(`${airport.iata} - ${airport.city}`, airport.iata)
     );

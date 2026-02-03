@@ -11,7 +11,7 @@ function initMap() {
     attribution: "&copy; OpenStreetMap contributors"
   }).addTo(map);
 
-  // ✅ paneで前後関係を固定
+  //paneで前後関係を固定
   map.createPane("routesVisualPane");
   map.getPane("routesVisualPane").style.zIndex = 400;
 
@@ -48,7 +48,7 @@ function drawRoute(route) {
     [destAirport.lat, destAirport.lng]
   ];
 
-  // ✅ 見た目用（細い線）: クリックは受けない
+  //見た目用（細い線）: クリックは受けない
   const visual = L.polyline(latlngs, {
     pane: "routesVisualPane",
     weight: 2,
@@ -56,7 +56,7 @@ function drawRoute(route) {
     interactive: false
   }).addTo(routeLayerGroup);
 
-  // ✅ 当たり判定用（太い透明線）: クリックを受ける
+  //当たり判定用（太い透明線）: クリックを受ける
   // opacityは 0 だと当たり判定が消えることがあるので 0.01 にする
   const hit = L.polyline(latlngs, {
     pane: "routesHitPane",
@@ -70,13 +70,13 @@ function drawRoute(route) {
   visual.routeData = route;
   hit.routeData = route;
 
-  // ✅ ポップアップは hit に付ける（クリックしやすい）
+  //ポップアップは hit に付ける（クリックしやすい）
   hit.bindPopup(`
     <strong>${route.origin} ⇄ ${route.destination}</strong><br/>
     航空会社: ${route.airlines.join(", ")}
   `);
 
-  // ✅ ホバーのハイライトも hit 側で拾う（線を触りやすい）
+  //ホバーのハイライトも hit 側で拾う（線を触りやすい）
   hit.on("mouseover", () => highlightRoutesByIata(null, route));
   hit.on("mouseout", resetRouteStyles);
 
@@ -93,11 +93,11 @@ function drawAirportMarker(airport) {
   if (exists) return;
 
   const marker = L.circleMarker([airport.lat, airport.lng], {
-    pane: "markersPane",     // ✅ ここが最重要（マーカー最前面）
+    pane: "markersPane", 
     radius: 7,
     weight: 1,
-    fillColor: "#003366",
-    color: "#003366",
+    fillColor: "#ffffff",
+    color: "#333333",
     fillOpacity: 0.9
   });
 
