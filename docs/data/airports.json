@@ -65,7 +65,7 @@
   { "iata": "MYJ", "city": "松山", "lat": 33.826893, "lng": 132.700114, "region": "四国", "major": false },
   { "iata": "KCZ", "city": "高知", "lat": 33.545217, "lng": 133.670166, "region": "四国", "major": false },
 
-  { "iata": "FUK", "city": "福岡", "lat": 33.585899353, "lng": 130.451004028, "region": "九州", "major": false },
+  { "iata": "FUK", "city": "福岡", "lat": 33.585899353, "lng": 130.451004028, "region": "九州", "major": true },
   { "iata": "KKJ", "city": "北九州", "lat": 33.845901, "lng": 131.035004, "region": "九州", "major": false },
   { "iata": "NGS", "city": "長崎", "lat": 32.916901, "lng": 129.914001, "region": "九州", "major": false },
   { "iata": "KMJ", "city": "熊本", "lat": 32.837299, "lng": 130.854996, "region": "九州", "major": false },

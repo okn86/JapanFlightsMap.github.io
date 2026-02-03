@@ -35,6 +35,40 @@ function setupAirportPicker() {
     "主要な空港", "北海道", "東北", "関東・信越", "東海・北陸", "関西", "中国", "四国", "九州", "沖縄"
   ];
 
+  const majorOrder = ["HND", "NRT", "ITM", "KIX", "CTS", "NGO", "FUK", "OKA"];
+  const majorOrderIndex = new Map(majorOrder.map((code, index) => [code, index]));
+
+  const islandIata = new Set([
+    "OIM", "HAC", "MYE",
+    "RIS", "RBJ", "OIR", "SHB", "MMB", "MBE",
+    "OKI", "IKI", "TSJ", "FUJ",
+    "TNE", "KUM", "ASJ", "KKX", "TKN", "OKE", "RNJ",
+    "IEJ", "KJP", "AGJ", "UEO", "KTD", "MMD", "MMY", "SHI", "TRA", "ISG", "HTR", "OGN"
+  ]);
+
+  const isIsland = (airport) => {
+    if (!airport || !airport.iata) return false;
+    return islandIata.has(airport.iata);
+  };
+
+  const compareAirports = (a, b) => {
+    const aMajor = !!a.major;
+    const bMajor = !!b.major;
+    if (aMajor !== bMajor) return aMajor ? -1 : 1;
+
+    if (aMajor && bMajor) {
+      const aIndex = majorOrderIndex.has(a.iata) ? majorOrderIndex.get(a.iata) : 999;
+      const bIndex = majorOrderIndex.has(b.iata) ? majorOrderIndex.get(b.iata) : 999;
+      if (aIndex !== bIndex) return aIndex - bIndex;
+    }
+
+    const aIsland = isIsland(a);
+    const bIsland = isIsland(b);
+    if (aIsland !== bIsland) return aIsland ? 1 : -1;
+
+    return (a.city || "").localeCompare(b.city || "", "ja");
+  };
+
   const byRegion = new Map();
   regionOrder.forEach(r => byRegion.set(r, []));
 
@@ -49,7 +83,16 @@ function setupAirportPicker() {
   });
 
   for (const [region, list] of byRegion.entries()) {
-    list.sort((a, b) => (a.city || "").localeCompare(b.city || "", "ja"));
+    if (region === "主要な空港") {
+      list.sort((a, b) => {
+        const aIndex = majorOrderIndex.has(a.iata) ? majorOrderIndex.get(a.iata) : 999;
+        const bIndex = majorOrderIndex.has(b.iata) ? majorOrderIndex.get(b.iata) : 999;
+        if (aIndex !== bIndex) return aIndex - bIndex;
+        return (a.city || "").localeCompare(b.city || "", "ja");
+      });
+      continue;
+    }
+    list.sort(compareAirports);
   }
 
   function renderAirports(region) {
