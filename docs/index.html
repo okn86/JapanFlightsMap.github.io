@@ -15,9 +15,16 @@
 
     <div class="search-bar">
 
-      <select id="airportSelect">
-        <option value="">空港を選択</option>
-      </select>
+      <div class="airport-picker" id="airportPicker">
+        <button type="button" id="airportPickerBtn" class="picker-btn">空港を選択</button>
+        <input type="hidden" id="airportSelect" value="" />
+        <div id="airportPickerPanel" class="picker-panel hidden" role="dialog" aria-label="空港選択">
+          <div class="picker-columns">
+            <ul id="regionList" class="region-list"></ul>
+            <div id="airportList" class="airport-list"></div>
+          </div>
+        </div>
+      </div>
 
       <select id="airlineSelect">
         <option value="">航空会社</option>

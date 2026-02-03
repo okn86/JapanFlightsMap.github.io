@@ -30,6 +30,88 @@ h1 {
   cursor: pointer;
 }
 
+#airportPicker {
+  position: relative;
+}
+
+.picker-btn {
+  padding: 6px 10px;
+  min-width: 180px;
+  text-align: left;
+  background: #fff;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.picker-panel {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 520px;
+  max-width: 90vw;
+  max-height: 320px;
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.picker-panel.hidden {
+  display: none;
+}
+
+.picker-columns {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  height: 100%;
+}
+
+.region-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-right: 1px solid #eee;
+  overflow-y: auto;
+}
+
+.region-list button {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  background: #fff;
+  text-align: left;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 14px;
+}
+
+.region-list button.active {
+  background: #f5f7ff;
+  font-weight: bold;
+}
+
+.airport-list {
+  overflow-y: auto;
+  padding: 6px;
+}
+
+.airport-item {
+  width: 100%;
+  padding: 8px 10px;
+  border: none;
+  background: #fff;
+  text-align: left;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 14px;
+}
+
+.airport-item:hover,
+.region-list button:hover {
+  background: #f9f9f9;
+}
+
 #map {
   height: calc(100vh - 110px);
 }
