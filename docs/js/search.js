@@ -93,8 +93,15 @@ function setupAirportPicker() {
   const byRegion = new Map();
   regionOrder.forEach(r => byRegion.set(r, []));
 
+  const activeAirportIata = new Set();
+  routes.forEach(route => {
+    if (route.origin) activeAirportIata.add(route.origin);
+    if (route.destination) activeAirportIata.add(route.destination);
+  });
+
   airports.forEach(airport => {
     if (!airport.iata) return;
+    if (!activeAirportIata.has(airport.iata)) return;
     const region = airport.region || "その他";
     if (!byRegion.has(region)) byRegion.set(region, []);
     byRegion.get(region).push(airport);
