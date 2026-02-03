@@ -71,9 +71,26 @@ function drawRoute(route) {
   hit.routeData = route;
 
   //ポップアップは hit に付ける（クリックしやすい）
+  const getAirportDisplayName = (airport) => {
+    if (!airport || !airport.city) return "";
+    if (airport.city.endsWith("（飛行場）")) {
+      return airport.city.replace("（", "").replace("）", "");
+    }
+    const match = airport.city.match(/（(.+?)）/);
+    return match ? match[1] : airport.city;
+  };
+
+  const originName = getAirportDisplayName(originAirport);
+  const destName = getAirportDisplayName(destAirport);
+
+  const airlineNames = route.airlines.map(code => {
+    const airline = airlines.find(a => a.iata === code);
+    return airline ? airline.name : code;
+  });
+
   hit.bindPopup(`
-    <strong>${route.origin} ⇄ ${route.destination}</strong><br/>
-    航空会社: ${route.airlines.join(", ")}
+    <strong>${originName} - ${destName}</strong><br/>
+    航空会社: ${airlineNames.join(", ")}
   `);
 
   //ホバーのハイライトも hit 側で拾う（線を触りやすい）
