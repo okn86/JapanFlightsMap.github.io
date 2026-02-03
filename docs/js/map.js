@@ -89,7 +89,7 @@ function drawRoute(route) {
   });
 
   hit.bindPopup(`
-    <strong>${originName} - ${destName}</strong><br/>
+    <strong>${originName} ⇄ ${destName}</strong><br/>
     航空会社: ${airlineNames.join(", ")}
   `);
 
