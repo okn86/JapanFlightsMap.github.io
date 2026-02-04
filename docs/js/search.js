@@ -244,6 +244,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const pickerBtn = document.getElementById("airportPickerBtn");
     if (pickerBtn) pickerBtn.textContent = "空港を選択";
 
+    updateAirlineOptions("");
     drawRoutes([]);
     updateRouteCount([]);
   });
