@@ -37,12 +37,36 @@ function populateDropdowns() {
     return (a.name || "").localeCompare(b.name || "", "ja");
   });
 
+  return visibleAirlines;
+}
+
+function updateAirlineOptions(selectedAirport) {
+  const airlineSelect = document.getElementById("airlineSelect");
+  const currentValue = airlineSelect.value;
+
+  const activeAirlines = new Set();
+  if (selectedAirport) {
+    routes.forEach(route => {
+      if (route.origin === selectedAirport || route.destination === selectedAirport) {
+        (route.airlines || []).forEach(code => activeAirlines.add(code));
+      }
+    });
+  }
+
+  airlineSelect.innerHTML = "";
+  airlineSelect.add(new Option("航空会社", ""));
+
+  const visibleAirlines = populateDropdowns();
   visibleAirlines.forEach(airline => {
-    if (!airline.iata || airline.hidden) return;
+    if (selectedAirport && !activeAirlines.has(airline.iata)) return;
     airlineSelect.add(
       new Option(`${airline.iata} - ${airline.name}`, airline.iata)
     );
   });
+
+  if (currentValue && [...airlineSelect.options].some(o => o.value === currentValue)) {
+    airlineSelect.value = currentValue;
+  }
 }
 
 function setupAirportPicker() {
@@ -133,6 +157,7 @@ function setupAirportPicker() {
       airportInput.value = "";
       pickerBtn.textContent = "空港を選択";
       pickerPanel.classList.add("hidden");
+      updateAirlineOptions("");
     });
     airportList.appendChild(allBtn);
 
@@ -144,6 +169,7 @@ function setupAirportPicker() {
         airportInput.value = airport.iata;
         pickerBtn.textContent = airport.city;
         pickerPanel.classList.add("hidden");
+        updateAirlineOptions(airport.iata);
       });
       airportList.appendChild(btn);
     });
@@ -191,7 +217,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   await loadData();
 
   initMap();
-  populateDropdowns();
+  updateAirlineOptions("");
   setupAirportPicker();
 
   // 初期は非表示
